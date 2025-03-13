@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Primary
 public class PaymentServiceImpl implements PaymentService {
 
   private final PaymentEventProducer paymentEventProducer;
   private final PaymentRepository paymentRepository;
-  private final StockRepository stockRepository;
 
   @Transactional
   @Override
@@ -35,8 +35,6 @@ public class PaymentServiceImpl implements PaymentService {
   @Transactional
   public void savePayment(OrderCreatedEvent event) {
     try {
-      stockRepository.getAndDecreaseStock(event.getProductId(), event.getQuantity());
-
       Payment payment = new Payment(event);
       paymentRepository.save(payment);
     } catch (Exception e) {

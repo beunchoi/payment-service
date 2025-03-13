@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Primary
 public class PaymentServiceImpl1 implements PaymentService {
 
   private final PaymentRepository paymentRepository;
