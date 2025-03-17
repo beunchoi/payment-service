@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-@Primary
 public class PaymentServiceImpl implements PaymentService {
 
   private final PaymentEventProducer paymentEventProducer;
